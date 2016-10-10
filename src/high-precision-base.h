@@ -13,6 +13,7 @@ class hpnumber
 		{
 			value=a;
 		}
+		string getnum(){return value;}
 		hpnumber add(hpnumber a,hpnumber b);
 		hpnumber sub(hpnumber a,hpnumber b);
 		hpnumber muti(hpnumber a,hpnumber b);
