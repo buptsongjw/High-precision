@@ -1,6 +1,6 @@
 
 #include ".\high-precision-base.h"
-//-----------------------------addtion-------------------------------
+//-----------------------------addition-------------------------------
 hpnumber hpnumber::add(hpnumber a,hpnumber b)
 {
 	int i,carry=0,l1,l2,l3,x,y;
