@@ -37,7 +37,7 @@ class hpnumber
 				hpnumber tmp(value);
 				return sub(tmp,b);
 			}
-		
+		 
 		//结构
 		hpnumber add(hpnumber a,hpnumber b);
 		hpnumber sub(hpnumber a,hpnumber b);
