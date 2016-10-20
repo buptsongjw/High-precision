@@ -101,3 +101,44 @@ hpnumber hpnumber::sub(hpnumber a,hpnumber b)
 	else { hpnumber ans(c.substr(p,l3));	ans.negative=negative;	return ans;}			
 	return ans;
 } 
+hpnumber hpnumber::multi(hpnumber a, hpnumber b)
+{
+	int i, j, k, l1, l2, l3, carry;
+	string c;
+	string zero="0";
+	char *Zero="0";	
+	hpnumber ans(zero);
+	l1 = strlen(&a.getval()[0]);
+	l2 = strlen(&b.getval()[0]);
+	l3 = l1 + l2;
+	if (l1 < l2)
+	{
+		hpnumber tmp = a;
+		a = b;
+		b = tmp;
+		l1 = l1 + l2;
+		l2 = l1 - l2;
+		l1 = l1 - l2;
+	}
+	carry = 0; // 进位
+	for (i = l2 - 1; i >= 0; i--)
+	{
+		// 拆分 乘 合并
+		char tmp[100];
+		memset(tmp, '0', sizeof(tmp));
+		int x = b.getval()[i] - '0';
+		for (j = l1 - 1; j >= 0; j--)
+		{
+			int y = a.getval()[j] - '0';
+			tmp[j + 1] = (x * y + carry)%10 + '0';
+			carry=(x*y+carry)/10; 
+		}
+		tmp[0] = '0' + carry;
+		for (k = 1; k <= l2 - 1 - i; k++)
+			strcat(tmp, Zero); // 补0
+		tmp[l1 + l2 - i] = '\0';
+		hpnumber n1(tmp);
+		ans = n1 + ans;
+	}
+	return ans;
+}
